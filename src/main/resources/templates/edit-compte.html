@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>edit Compte</h1>
+	<form th:object="${compte}"  th:action="@{/comptes/update}" method="post">
+		<table>
+			<tr>
+				<td><label text="Rib">Rib :</label></td>
+				<td><input type="number" th:field="*{client.cin}" readonly="readonly" /></td>
+			</tr>
+			
+			<tr>
+				<td><label text="solde">Solde :</label></td>
+				<td><input type="text" th:field="*{solde}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Update" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

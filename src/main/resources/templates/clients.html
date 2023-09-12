@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+	<span th:text="${serverTime}"></span>
+	<h1>Add new Client</h1>
+	<form th:action="@{/clients/save}" method="POST">
+		<table>
+			<tr>
+				<td>Cin :</td>
+				<td><input type="text" name="cin" /></td>
+			</tr>
+			<tr>
+				<td>Nom :</td>
+				<td><input type="text" name="nom" /></td>
+			</tr>
+			<tr>
+				<td>Prenom :</td>
+				<td><input type="text" name="prenom" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Save"
+					class="btn btn-outline-primary" /></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+	<hr />
+	<h1>List of clients</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Cin</th>
+			<th>Prenom</th>
+			<th>Nom</th>
+			<th>Edit</th>
+			<th>Delete</th>
+			<th>Delete-ajax</th>
+		</tr>
+		<tr th:id="${client.cin}" th:each="client: ${clients}">
+			<td th:text="${client.cin}" />
+			<td th:text="${client.nom}" />
+			<td th:text="${client.prenom}" />
+
+			<td><a th:href="'/clients/edit/'+${client.cin}">edit</a></td>
+			<td><a th:href="'/clients/delete/'+${client.cin}">delete</a></td>
+			<td><a th:href="'javascript:deleteClient('+${client.cin}+')'">delete-ajax</a></td>
+		</tr>
+
+	</table>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script src="../js/clients.js"></script>
+	<script src="../js/sweetalert.min.js"></script>
+</body>
+</html>
